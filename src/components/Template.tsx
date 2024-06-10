@@ -18,8 +18,8 @@ export const Template : React.FC<TemplateProps> = (props : TemplateProps) => {
 
 const Header: React.FC = () => {
     return (
-        <header className="bg-gradient-to-r from-indigo-800 to-indigo-250 bg-opacity-50  text-white py-5">
-            <h1 className="text-1xl font-bold ml-5">Image Lite App</h1>
+        <header className="bg-gradient-to-r from-indigo-800 to-indigo-250 bg-opacity-50  text-white p-5">
+            <h1 className="text-1xl font-bold">Image Lite App</h1>
         </header>
     )
 }
