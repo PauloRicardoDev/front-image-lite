@@ -1,60 +1,65 @@
 "use client"
 import {ImageCard, Template} from "@/components";
+import {useImageService} from "@/resources/image/image.service";
 import {useState} from "react";
+import {Image} from "@/resources/image/image.resource";
 
 export default function GaleriaPage(){
 
-    const image1 = 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/311121507/original/199fe384ac4c4b2db0978d8b2f00acb67bdc17d3/make-pixel-art-background-pixel-scenery-and-landscape.jpg'
-    const image2 = 'https://mainleaf.com/wp-content/uploads/2023/06/pixel-art-paisagem-2-1024x577.png'
-    const nomeImage1 = 'Castelo - Dia (Pixel Art)'
-    const nomeImage2 = 'Castelo - Por do Sol (Pixel Art)'
+    const userService = useImageService();
+    const [images, setImages] = useState<Image[]>([]);
+    const [query, setQuery] = useState<string>('');
+    const [extension, setExtension] = useState<string>('');
 
-    const [codigoImage, setCodigoImage] = useState<Number>();
-    const [urlImage, setUrlImage] = useState<String>(image2);
-    const [nomeImage, setNomeImage] = useState<String>(nomeImage1)
-    function mudarImage(){
-        if (codigoImage == 1){
-            setCodigoImage(2)
-            setUrlImage(image1)
-            setNomeImage(nomeImage2)
-        }else {
-            setCodigoImage(1)
-            setUrlImage(image2)
-            setNomeImage(nomeImage1)
-        }
+    async function seachImages(){
+        const result = await userService.buscar();
+        setImages(result)
+        // console.table(result);
+        console.log(query);
     }
 
-    // @ts-ignore
-    return(
-        <Template>
-            <h1 className="font-bold ">Galeria</h1>
+    function renderImageCard(image: Image){
+        return (
+            <ImageCard
+                src={image.url}
+                nome={image.name}
+                tamanho={image.size}
+                dataUpload={image.uploadDate}
+            />
+        )
+    }
 
-            <button onClick={mudarImage} className="p-4 mt-3 bg-gradient-to-r from-indigo-800 to-indigo-250 bg-opacity-50  text-white rounded-full">Click para mudar imagem!</button>
+    function renderImageCards(){
+        return images.map(renderImageCard)
+    }
 
-            <section className="grid grid-cols-3 gap-5">
-                <ImageCard
-                    src={urlImage}
-                    nome={nomeImage}
-                    tamanho='4MB'
-                    dataUpload='01/01/2024'
-                />
+    return <Template>
+        <h1 className="font-bold ">Galeria</h1>
 
-                <ImageCard
-                    src={urlImage}
-                    nome={nomeImage}
-                    tamanho='4MB'
-                    dataUpload='01/01/2024'
-                />
+        <section className="flex flex-col items-center justify-center my-5">
+            <div className="flex space-x-4">
+                <input onChange={event => setQuery(event.target.value)}
+                       className="border-2 border-indigo-800 px-3 py-2
+                       rounded-lg text-white bg-transparent" type="text"/>
 
-                <ImageCard
-                    src={urlImage}
-                    nome={nomeImage}
-                    tamanho='4MB'
-                    dataUpload='01/01/2024'
-                />
+                <select className="px-3 py-2 rounded-lg text-white bg-neutral-800">
+                    <option>All formats</option>
+                </select>
+                <button onClick={seachImages} className="px-3 py-2 bg-gradient-to-r from-indigo-800 to-indigo-900
+                 bg-opacity-50 text-white rounded-lg">
+                    Search
+                </button>
+                <button className="px-3 py-2 bg-gradient-to-r from-yellow-400 to-yellow-500
+                bg-opacity-50 text-white rounded-lg">
+                    Add new
+                </button>
+            </div>
+        </section>
 
-
-            </section>
-        </Template>
-    )
+        <section className="grid grid-cols-3 gap-5">
+            {
+                renderImageCards()
+            }
+        </section>
+    </Template>
 }
