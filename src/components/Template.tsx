@@ -10,12 +10,12 @@ export const Template : React.FC<TemplateProps> = ({children, loading = false}: 
         <main>
             <Header/>
             <main className={`${loading ? 'animate-pulse': ''} container mx-auto mt-8 px-4`}>
+                {children}
                 <RenderIf condition={loading}>
                     <section className="text-center">
                         <Loading/>
                     </section>
                 </RenderIf>
-                {children}
             </main>
         </main>
     )

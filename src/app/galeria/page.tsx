@@ -1,5 +1,5 @@
 "use client"
-import {ImageCard, Template} from "@/components";
+import {ImageCard, Template, Button} from "@/components";
 import {useImageService} from "@/resources/image/image.service";
 import {useState} from "react";
 import {Image} from "@/resources/image/image.resource";
@@ -61,19 +61,25 @@ export default function GaleriaPage(){
                         <option value="GIF">GIF</option>
                     </select>
                 </button>
-                <button onClick={seachImages} title="Click para buscar imagem/imagens"
-                        className="w-32 px-3 py-2 bg-gradient-to-r from-indigo-800 to-indigo-900
-                    text-white rounded-lg transition duration-300 ease-in-out
-                    hover:from-indigo-700 hover:to-indigo-700 hover:bg-opacity-70">
-                    Search
-                </button>
+
+                <Button
+                    onClick={seachImages}
+                    style=' bg-gradient-to-r from-indigo-800 to-indigo-900
+                    transition duration-300 ease-in-out
+                    hover:from-indigo-700 hover:to-indigo-700 hover:bg-opacity-70'
+                    label='Search'
+                    title='Click para buscar imagem/imagens'
+                />
+
                 <Link href="/formulario">
-                    <button title="Click para adicionar imagem"
-                        className="w-32 px-3 py-2 bg-gradient-to-r from-rose-700 to-rose-800
-                        text-white rounded-lg transition duration-300 ease-in-out
-                        hover:from-rose-600 hover:to-rose-600 hover:bg-opacity-70">
-                        Add new
-                    </button>
+                    <Button
+                        style='bg-gradient-to-r from-rose-700 to-rose-800
+                        transition duration-300 ease-in-out
+                        hover:from-rose-600 hover:to-rose-600 hover:bg-opacity-70'
+                        label='Add new'
+                        title='Click para adicionar imagem'
+                    />
+
                 </Link>
             </div>
         </section>
