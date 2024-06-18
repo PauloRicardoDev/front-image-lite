@@ -25,7 +25,9 @@ export default function GaleriaPage(){
         setImages(result)
         setLoading(false);
         setMsgAlert("")
-        console.log(result)
+        if (result.length == 0 ){
+            setMsgAlert("Não encontramos imagens com os parâmetros informados.")
+        }
     }
 
     function renderImageCard(image: Image){
@@ -46,12 +48,8 @@ export default function GaleriaPage(){
     }
 
     return <Template_galery loading={loading}>
-
-
         <section className="banner w-full container_filter">
-
             <Header_galery/>
-
             <section className="container mx-auto mt-8">
 
                 <div className="items-center mb-14 gap-10 flex flex-col justify-between">
@@ -139,7 +137,7 @@ export default function GaleriaPage(){
             </section>
         </section>
 
-        <section className={`${msgAlert != '' && loading != true ? 'p-44' : 'hidden'}`}>
+        <section className={` ${ msgAlert != '' && !loading ? 'pt-36' : 'hidden'}`}>
             <h1 className="text-2xl text-neutral-700 text-center">{msgAlert}</h1>
         </section>
 

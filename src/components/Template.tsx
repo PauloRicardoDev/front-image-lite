@@ -39,8 +39,7 @@ export const Template_galery : React.FC<TemplateProps> = ({children, loading = f
 
 const Header: React.FC = () => {
     return (
-        // bg-gradient-to-r from-indigo-800 to-indigo-250 bg-opacity-50
-        <header className="text-white p-6">
+        <header className=" bg-gradient-to-r from-neutral-900 to-indigo-250 bg-opacity-50 text-white p-6">
             <section className="flex justify-start items-center gap-2">
                 <IoIosAnalytics className="text-5xl text-indigo-800" />
                 <h1 className="text-1xl">Image Lite App</h1>
