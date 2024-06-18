@@ -1,0 +1,60 @@
+.banner{
+    background-image: linear-gradient(62deg, rgba(31, 31, 31, 0.88) 0%, rgba(35, 35, 35, 0.51) 100%), url("./assets/banner01.png");
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+}
+
+.container_filter{
+    height: 475px;
+}
+
+
+@media (max-width: 800px) {
+
+    .container_filter{
+        height: 620px;
+    }
+
+    .container_filter-box{
+        display: flex;
+        flex-direction: column;
+        background: none;
+        margin-bottom: 4rem;
+    }
+
+    .container_filter-box-search{
+        background: #2c2c2c;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .container_filter-box-add{
+        width: 90px;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 10px;
+        background: #2c2c2c;
+    }
+
+    .container_cards{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+        gap: 1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .container_filter{
+        height: 650px;
+    }
+
+    .observation{
+        font-size: .8rem;
+    }
+}
