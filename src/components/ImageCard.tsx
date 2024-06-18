@@ -15,18 +15,19 @@ export const ImageCard: React.FC<ImageCardProps> = ( {src, nome, tamanho, dataUp
     }
 
     return (
-        <nav className="card mt-5 relative bg-neutral-800 rounded-md
+        <nav className="card relative bg-neutral-800 rounded-md
          transition-transform ease-in duration-300
          transform hover:shadow-lg hover:-translate-y-2 hover:100">
 
-            <img onClick={download}  className=" h-56 w-full object-cover rounded-md" src={src} alt=""/>
+            <img onClick={download} title="Click sobre as imagem para fazer download"
+                 className="cursor-pointer h-56 w-full object-cover rounded-md" src={src} alt="imagem"/>
 
             <section className="py-4">
                 <div className="m-4">
                     <h3 className="text-xl font-semibold mb-2 text-gray-600">{nome}</h3>
-                    <p className="text-xs text-indigo-400">{extension}</p>
-                    <p className="text-xs my-2 text-indigo-400">{formatBytes(tamanho)}</p>
-                    <p className="text-xs text-indigo-400">{dataUpload}</p>
+                    <p className="text-xs text-indigo-400">Extensão - {extension}</p>
+                    <p className="text-xs my-2 text-indigo-400">Tamanho - {formatBytes(tamanho)}</p>
+                    <p className="text-xs text-indigo-400">Data de Upload - {dataUpload}</p>
                 </div>
             </section>
 

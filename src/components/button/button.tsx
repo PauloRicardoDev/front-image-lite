@@ -1,6 +1,7 @@
 import React from "react";
 
 interface ButtonProps{
+    children?: React.ReactNode
     style?:string
     label?: string
     title?:string
@@ -8,14 +9,13 @@ interface ButtonProps{
 }
 
 export const Button: React.FC<ButtonProps> = (
-    {style, label, title, onClick}
+    {children,style, label, title, onClick}
 ) => {
     return (
-        <button
-            onClick={onClick}
-            title={title}
-            className={`w-32 px-3 py-2 rounded-lg ${style}`}>
+        <button className={`${children ? 'flex flex-row items-center justify-between': 'text-center'} 
+            ${style}`} onClick={onClick} title={title}>
             {label}
+            {children}
         </button>
     )
 }
