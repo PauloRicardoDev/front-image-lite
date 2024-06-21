@@ -1,5 +1,7 @@
 import React from "react"
 import {IoIosAnalytics, IoIosImage} from "react-icons/io";
+import { MdCopyright } from "react-icons/md";
+import {ToastContainer} from "react-toastify";
 
 interface TemplateProps{
     children: React.ReactNode
@@ -8,38 +10,50 @@ interface TemplateProps{
 
 export const Template : React.FC<TemplateProps> = ({children, loading = false}: TemplateProps) => {
     return (
-        <body>
+        <main>
             <Header/>
-            <main className={`${loading ? 'animate-pulse': ''} w-full `}>
+            <section className={`${loading ? 'animate-pulse': ''} w-full `}>
                 {children}
                 <RenderIf condition={loading}>
                     <section className="text-center">
                         <Loading/>
                     </section>
                 </RenderIf>
-            </main>
-        </body>
+            </section>
+            <Footer/>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={8000}
+                hideProgressBar={false}
+                draggable={true}
+                closeOnClick={true}
+                pauseOnHover={true}
+                theme={"dark"}
+            />
+        </main>
     )
 }
 
 export const Template_galery : React.FC<TemplateProps> = ({children, loading = false}: TemplateProps) => {
     return (
-        <body>
-            <main className={`${loading ? 'animate-pulse': ''} w-full `}>
+        <main>
+            <section className={`${loading ? 'animate-pulse' : ''} w-full `}>
                 {children}
                 <RenderIf condition={loading}>
                     <section className="text-center">
                         <Loading/>
                     </section>
                 </RenderIf>
-            </main>
-        </body>
+            </section>
+            <Footer/>
+        </main>
     )
 }
 
 const Header: React.FC = () => {
     return (
-        <header className=" bg-gradient-to-r from-neutral-900 to-indigo-250 bg-opacity-50 text-white p-6">
+        <header className=" bg-gradient-to-r from-neutral-800 to-indigo-250 bg-opacity-50 text-white p-6">
             <section className="flex justify-start items-center gap-2">
                 <IoIosAnalytics className="text-5xl text-indigo-800" />
                 <h1 className="text-1xl">Image Lite App</h1>
@@ -57,6 +71,19 @@ export const Header_galery: React.FC = () => {
                 <h1 className="font-bold text-2xl">Galeria </h1>
             </section>
         </header>
+    )
+}
+
+const Footer: React.FC = () => {
+    return(
+        <footer className="mt-10 p-10  text-xs font-semibold grid grid-cols-1 gap-3 border-t-2 border-neutral-800">
+            <h1 className="text-gray-700 font-medium">Version: 0.1 - Image Lite App</h1>
+            <span className="text-gray-700 font-medium">Desenvolvido por: Paulo Ricardo Chagas</span>
+            <div className="flex flex-row justify-start items-center gap-2 text-gray-700 font-medium">
+                <MdCopyright />
+                <span>Todos os diretos reservados</span>
+            </div>
+        </footer>
     )
 }
 
