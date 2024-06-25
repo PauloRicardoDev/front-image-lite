@@ -7,6 +7,7 @@ interface inputPrimaryProps {
     placeholder?: string;
     id?: string;
     value?: string;
+    type?: string;
 }
 
 // Previne o comportamento padrão de submit do formulário
@@ -14,7 +15,7 @@ const handleSubmit = (event: any) => {
     event.preventDefault();
 };
 
-export const InputPrimary: React.FC<inputPrimaryProps> = ({...props}) => {
+export const InputPrimary: React.FC<inputPrimaryProps> = ({type = "text", ...props}) => {
     return (
         <TextField
             sx={{
@@ -33,6 +34,9 @@ export const InputPrimary: React.FC<inputPrimaryProps> = ({...props}) => {
                 '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
                     borderColor: '#818181',
                 },
+                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#4338CA', // Cor da borda quando o campo está focado
+                },
                 '& .MuiInputLabel-root.Mui-focused': {
                     color: '#949494',
                 },
@@ -40,11 +44,11 @@ export const InputPrimary: React.FC<inputPrimaryProps> = ({...props}) => {
             required
             id={props.id}
             label={props.label}
-            defaultValue=""
             onChange={props.onChange}
             placeholder={props.placeholder}
-            autoComplete="new-password, off"
+            autoComplete="new password"
             value={props.value}
+            type={type}
             // autoComplete="off"
             // size="small"
         />

@@ -53,7 +53,8 @@ export const Template_galery : React.FC<TemplateProps> = ({children, loading = f
 
 const Header: React.FC = () => {
     return (
-        <header className=" bg-gradient-to-r from-neutral-800 to-indigo-250 bg-opacity-50 text-white p-6">
+        // bg-gradient-to-r from-neutral-800 to-indigo-250 bg-opacity-50
+        <header className=" text-white p-6">
             <section className="flex justify-start items-center gap-2">
                 <IoIosAnalytics className="text-5xl text-indigo-800" />
                 <h1 className="text-1xl">Image Lite App</h1>
@@ -76,12 +77,12 @@ export const Header_galery: React.FC = () => {
 
 const Footer: React.FC = () => {
     return(
-        <footer className="mt-10 p-10  text-xs font-semibold grid grid-cols-1 gap-3 border-t-2 border-neutral-800">
-            <h1 className="text-gray-700 font-medium">Version: 0.1 - Image Lite App</h1>
-            <span className="text-gray-700 font-medium">Desenvolvido por: Paulo Ricardo Chagas</span>
-            <div className="flex flex-row justify-start items-center gap-2 text-gray-700 font-medium">
+        <footer className="mt-10 p-10 text-xs font-semibold grid grid-cols-1 gap-3">
+            <h1 className="text-neutral-600 font-medium">Version: 0.1 - Image Lite App</h1>
+            <span className="text-neutral-600 font-medium">Desenvolvido por: Paulo Ricardo Chagas</span>
+            <div className="text-neutral-600 flex flex-row justify-start items-center gap-2 font-medium">
                 <MdCopyright />
-                <span>Todos os diretos reservados</span>
+                <span className="text-neutral-600">Todos os diretos reservados</span>
             </div>
         </footer>
     )

@@ -1,0 +1,8 @@
+.container_principal-banner{
+    min-height: 100vh;
+    height: 100%;
+    background-image: linear-gradient(62deg, rgb(31, 31, 31) 0%, rgba(35, 35, 35, 0.82) 100%), url("./assets/banner01.png");
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+}
