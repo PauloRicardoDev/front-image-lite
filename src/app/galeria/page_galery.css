@@ -1,5 +1,8 @@
+
+
 .banner{
-    background-image: linear-gradient(62deg, rgba(31, 31, 31, 0.88) 0%, rgba(35, 35, 35, 0.51) 100%), url("./assets/banner01.png");
+    background-image: linear-gradient(62deg, rgba(31, 31, 31, 0.88) 0%, rgba(35, 35, 35, 0.51) 100%),
+    url('/assets/banner.png'); /* Caminho absoluto a partir de /public */
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;

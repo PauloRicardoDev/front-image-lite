@@ -7,6 +7,8 @@ import React, {useState} from "react";
 import {useFormik} from "formik";
 import {FormProps, formScheme, formValidationScheme} from './formScheme'
 import Link from "next/link";
+// import {StaticImageData} from 'next/image';
+// import banner from '/src/assets/banner.png'; // Caminho absoluto
 
 export default function FormularioPage(){
 
@@ -14,6 +16,7 @@ export default function FormularioPage(){
     const [imagePreview, setImagePreview] = useState<string>();
     const service = useImageService();
     const notification = useNotification();
+    // const logoUrl: string = (banner as StaticImageData).src;
 
     const formik = useFormik<FormProps>({
         initialValues: formScheme,
@@ -26,6 +29,7 @@ export default function FormularioPage(){
         setLoading(true);
         const formData = new FormData();
         formData.append('name', String(dados.name));
+        // @ts-ignore
         formData.append('file', dados.file);
         formData.append('tags', String(dados.tags));
 
@@ -52,14 +56,14 @@ export default function FormularioPage(){
         setImagePreview('')
     }
 
-    return(
+    return (
        <AuthenticatedPage>
            <Template loading={loading}>
                <section className="flex flex-col justify-center container mx-auto p-10">
 
                    <Link href="galeria">
                        <section className="mb-10 w-48 flex flex-row justify-start gap-1 items-center
-                     bg-gradient-to-r from-neutral-700 to-neutral-700 rounded-lg p-3
+                         bg-gradient-to-r from-neutral-800 to-neutral-800 rounded-lg p-3
                         transition duration-300 ease-in-out
                         hover:from-indigo-700 hover:to-indigo-700 hover:bg-opacity-70"
                        >

@@ -63,7 +63,7 @@ export default function Login(){
         <main className="container_principal-banner">
             <Template loading={loading}>
                 <div className="flex justify-center items-center">
-                    <section className="grid grid-cols-1 gap-5 items-center  my-20">
+                    <section className="grid grid-cols-1 gap-5 items-center my-20">
 
                         <h1 className="font-extrabold text-4xl ">{ newUserState ? 'Nova Conta' : 'Login'}</h1>
                         <h2>{ newUserState ? 'Preencha os campos abaixo!' : 'Entre em sua conta!'}</h2>
@@ -129,7 +129,7 @@ export default function Login(){
                                     />
 
                                     <Button style={"w-full rounded-lg text-white p-4 " +
-                                        "bg-gradient-to-r from-neutral-700 to-neutral-700 " +
+                                        "bg-gradient-to-r from-neutral-800 to-neutral-800 " +
                                         "transition duration-300 ease-in-out p-3 " +
                                         "rounded-lg hover:from-rose-700 hover:to-rose-700 hover:bg-opacity-70"}
                                             type={"button"}
@@ -140,7 +140,7 @@ export default function Login(){
                             </RenderIf>
 
                             <RenderIf condition={!newUserState}>
-                                <section className="flex justify-between items-center gap-36">
+                                <section className="flex justify-between flex-col items-center gap-5">
                                     <Button style={"w-full rounded-lg text-white p-4 " +
                                         "bg-gradient-to-r from-neutral-700 to-neutral-700" +
                                         " transition duration-300 ease-in-out hover:from-indigo-700" +
@@ -150,7 +150,7 @@ export default function Login(){
                                     />
 
                                     <Button style={"w-full rounded-lg text-white p-4 " +
-                                        "bg-gradient-to-r from-neutral-700 to-neutral-700 " +
+                                        "bg-gradient-to-r from-neutral-800 to-neutral-800 " +
                                         " transition duration-300 ease-in-out hover:from-indigo-700" +
                                         " hover:to-indigo-700 hover:bg-opacity-70"}
                                             type={"button"}

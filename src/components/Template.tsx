@@ -1,7 +1,13 @@
+'use client'
+
 import React from "react"
-import {IoIosAnalytics, IoIosImage} from "react-icons/io";
+import { IoIosPower } from "react-icons/io";
 import { MdCopyright } from "react-icons/md";
 import {ToastContainer} from "react-toastify";
+import Link from "next/link";
+import {Button} from "@/components/button";
+import {useAuth} from "@/resources";
+import {useRouter} from "next/navigation";
 
 interface TemplateProps{
     children: React.ReactNode
@@ -9,28 +15,28 @@ interface TemplateProps{
 }
 
 export const Template : React.FC<TemplateProps> = ({children, loading = false}: TemplateProps) => {
+
     return (
         <main>
             <Header/>
-            <section className={`${loading ? 'animate-pulse': ''} w-full `}>
+            <section className={`${loading ? 'animate-pulse': ''} w-full`}>
                 {children}
                 <RenderIf condition={loading}>
                     <section className="text-center">
                         <Loading/>
                     </section>
                 </RenderIf>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={8000}
+                    hideProgressBar={false}
+                    draggable={true}
+                    closeOnClick={true}
+                    pauseOnHover={true}
+                    theme={"dark"}
+                />
             </section>
             <Footer/>
-
-            <ToastContainer
-                position="top-right"
-                autoClose={8000}
-                hideProgressBar={false}
-                draggable={true}
-                closeOnClick={true}
-                pauseOnHover={true}
-                theme={"dark"}
-            />
         </main>
     )
 }
@@ -52,32 +58,76 @@ export const Template_galery : React.FC<TemplateProps> = ({children, loading = f
 }
 
 const Header: React.FC = () => {
+
+    const auth = useAuth();
+    const username = auth.getUserSession();
+    const router = useRouter();
+
+    function logout(){
+        auth.invalidateSession();
+        router.push("/login")
+    }
+
     return (
-        // bg-gradient-to-r from-neutral-800 to-indigo-250 bg-opacity-50
-        <header className=" text-white p-6">
+        <header className=" text-white p-6 flex justify-between flex-row">
             <section className="flex justify-start items-center gap-2">
-                <IoIosAnalytics className="text-5xl text-indigo-800" />
+                <Link href="/galeria">
+                    <img src="/assets/logo.png" className="w-10"/>
+                </Link>
                 <h1 className="text-1xl">Image Lite App</h1>
             </section>
+
+            <RenderIf condition={!!username}>
+                <section className="flex justify-start items-center gap-5">
+                    <h1>Olá, {username?.name}</h1>
+                    <Button type={"button"} onClick={logout}>
+                        <IoIosPower className="text-2xl"/>
+                    </Button>
+                </section>
+            </RenderIf>
         </header>
     )
 }
 
 export const Header_galery: React.FC = () => {
+
+    const auth = useAuth();
+    const username = auth.getUserSession();
+    const router = useRouter();
+
+    function logout(){
+        auth.invalidateSession();
+        router.push("/login")
+    }
+
     return (
-        // bg-gradient-to-r from-indigo-800 to-indigo-250 bg-opacity-50
-        <header className="text-white p-6">
-            <section className="flex flex-row gap-1 items-center mb-14">
-                <IoIosImage className="text-white text-2xl"/>
-                <h1 className="font-bold text-2xl">Galeria </h1>
+        <header className=" text-white p-6 flex justify-between flex-row">
+            <section className="flex flex-row gap-2 items-center">
+                <Link href="/galeria">
+                    <img src="/assets/logo.png" className="w-10"/>
+                </Link>
+                <h1 className="font-bold text-2xl">Galeria</h1>
             </section>
+
+            <RenderIf condition={!!username}>
+                <section className="flex justify-start items-center gap-5">
+                    <h1>Olá, {username?.name}</h1>
+                    <Button type={"button"} onClick={logout}
+                            title={'Click para sair'}
+                            style={" bg-gradient-to-r from-neutral-700 to-neutral-700 transition duration-300" +
+                                " ease-in-out p-3 rounded-full hover:from-rose-700 hover:to-rose-700 hover:bg-opacity-70"}
+                    >
+                        <IoIosPower className="text-2xl"/>
+                    </Button>
+                </section>
+            </RenderIf>
         </header>
     )
 }
 
 const Footer: React.FC = () => {
-    return(
-        <footer className="mt-10 p-10 text-xs font-semibold grid grid-cols-1 gap-3">
+    return (
+        <footer className="p-7 text-xs font-semibold grid grid-cols-1 gap-3">
             <h1 className="text-neutral-600 font-medium">Version: 0.1 - Image Lite App</h1>
             <span className="text-neutral-600 font-medium">Desenvolvido por: Paulo Ricardo Chagas</span>
             <div className="text-neutral-600 flex flex-row justify-start items-center gap-2 font-medium">

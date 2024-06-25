@@ -51,7 +51,7 @@ export default function GaleriaPage(){
             <Template_galery loading={loading}>
                 <section className="banner w-full container_filter">
                     <Header_galery/>
-                    <section className="container mx-auto mt-8">
+                    <section className="container mx-auto mt-24">
 
                         <div className="items-center mb-14 gap-10 flex flex-col justify-between">
                             <h1 className="font-bold text-4xl text-center">Por favor, utilize o filtro para buscar imagens.</h1>
