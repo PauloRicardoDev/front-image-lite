@@ -65,8 +65,8 @@ export default function Login(){
                 <div className="flex justify-center items-center">
                     <section className="grid grid-cols-1 gap-5 items-center my-20">
 
-                        <h1 className="font-extrabold text-4xl ">{ newUserState ? 'Nova Conta' : 'Login'}</h1>
-                        <h2>{ newUserState ? 'Preencha os campos abaixo!' : 'Entre em sua conta!'}</h2>
+                        <h1 className="font-extrabold text-4xl text-white">{ newUserState ? 'Nova Conta' : 'Login'}</h1>
+                        <h2 className="text-white">{ newUserState ? 'Preencha os campos abaixo!' : 'Entre em sua conta!'}</h2>
 
                         <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 gap-5 items-center">
                             <RenderIf condition={newUserState}>

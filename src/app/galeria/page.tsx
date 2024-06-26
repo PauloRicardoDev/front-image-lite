@@ -49,7 +49,7 @@ export default function GaleriaPage(){
     return(
         <AuthenticatedPage>
             <Template_galery loading={loading}>
-                <section className="banner w-full container_filter">
+                <section className="banner w-full container_filter text-white">
                     <Header_galery/>
                     <section className="container mx-auto mt-24">
 

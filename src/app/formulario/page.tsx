@@ -59,7 +59,7 @@ export default function FormularioPage(){
     return (
        <AuthenticatedPage>
            <Template loading={loading}>
-               <section className="flex flex-col justify-center container mx-auto p-10">
+               <section className="flex flex-col justify-center container mx-auto p-10 text-white">
 
                    <Link href="galeria">
                        <section className="mb-10 w-48 flex flex-row justify-start gap-1 items-center
